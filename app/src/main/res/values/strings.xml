@@ -76,4 +76,7 @@
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_email_login">EmailLogin</string>
+    <string name="post_title">Post Title</string>
+    <string name="post_desription_in_sort">Post Desription in sort..</string>
+    <string name="update">Update</string>
 </resources>

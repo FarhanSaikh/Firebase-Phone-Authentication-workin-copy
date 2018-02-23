@@ -394,7 +394,7 @@ public class MainActivity extends AppCompatActivity  implements
                     if (snapshot.hasChild(mAuth.getCurrentUser().getPhoneNumber())) {
                         Toast.makeText(MainActivity.this,"You have data on server for this number",Toast.LENGTH_LONG).show();
 
-                        Intent intent1 = new Intent(getApplicationContext(), Hallfinder.class);
+                        Intent intent1 = new Intent(getApplicationContext(), Createpost.class);
 
                         startActivity(intent1);
                         finish();
