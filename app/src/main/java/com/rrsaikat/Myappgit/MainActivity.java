@@ -387,17 +387,18 @@ public class MainActivity extends AppCompatActivity  implements
 
             FirebaseDatabase firebaseDataba=FirebaseDatabase.getInstance();
 
-            DatabaseReference rootRef = firebaseDataba.getReference().child("Users");
+            DatabaseReference rootRef = firebaseDataba.getReference(mAuth.getCurrentUser().getPhoneNumber());
             rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    if (snapshot.hasChild(mAuth.getCurrentUser().getPhoneNumber())) {
+                    if (snapshot.hasChild("User Information")) {
                         Toast.makeText(MainActivity.this,"You have data on server for this number",Toast.LENGTH_LONG).show();
 
                         Intent intent1 = new Intent(getApplicationContext(), Createpost.class);
 
                         startActivity(intent1);
                         finish();
+
 
                     }
                     else {

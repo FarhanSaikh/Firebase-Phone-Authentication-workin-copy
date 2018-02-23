@@ -69,7 +69,7 @@ public class UserDetails extends AppCompatActivity {
 
 
                     FirebaseDatabase firebaseDataba=FirebaseDatabase.getInstance();
-                    DatabaseReference current_user_db=FirebaseDatabase.getInstance().getReference().child("Users").child(usermobile);
+                    DatabaseReference current_user_db=FirebaseDatabase.getInstance().getReference(usermobile).child("User Information");
                     String username=name.getText().toString();
                     String useremail=emal.getText().toString();
                     String userpass=password.getText().toString();
@@ -107,7 +107,7 @@ public class UserDetails extends AppCompatActivity {
 
     public void expert(){
 
-        Intent intent=new Intent(UserDetails.this,Hallfinder.class);
+        Intent intent=new Intent(UserDetails.this,Createpost.class);
         startActivity(intent);
         finish();
     }
