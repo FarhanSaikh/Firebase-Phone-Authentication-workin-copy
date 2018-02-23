@@ -1,4 +1,4 @@
-package com.rrsaikat.pstuah;
+package com.rrsaikat.Myappgit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Hallfinder extends AppCompatActivity implements View.OnClickListener{
 
     private Button mSignOutButton;
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,10 @@ public class Hallfinder extends AppCompatActivity implements View.OnClickListene
         mSignOutButton.setOnClickListener(this);
 
 
-        mAuth = FirebaseAuth.getInstance();
     }
 
     private void signOut() {
-        mAuth.signOut();
+        FirebaseAuth.getInstance().signOut();
     }
 
 

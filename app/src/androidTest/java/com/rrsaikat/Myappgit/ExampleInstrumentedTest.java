@@ -1,4 +1,4 @@
-package com.rrsaikat.pstuah;
+package com.rrsaikat.Myappgit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

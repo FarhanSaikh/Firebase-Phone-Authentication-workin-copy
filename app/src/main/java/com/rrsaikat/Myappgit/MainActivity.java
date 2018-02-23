@@ -1,10 +1,9 @@
-package com.rrsaikat.pstuah;
+package com.rrsaikat.Myappgit;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +31,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity  implements
     private static final int STATE_SIGNIN_SUCCESS = 6;
 
     // [START declare_auth]
-    private FirebaseAuth mAuth;
+     private FirebaseAuth mAuth;
     // [END declare_auth]
 
     private boolean mVerificationInProgress = false;
@@ -379,9 +383,45 @@ public class MainActivity extends AppCompatActivity  implements
             mStatusText.setText(R.string.signed_in);
             mDetailText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
             */
-            Intent intent = new Intent(this, Hallfinder.class);
-            startActivity(intent);
-            finish();
+
+
+            FirebaseDatabase firebaseDataba=FirebaseDatabase.getInstance();
+
+            DatabaseReference rootRef = firebaseDataba.getReference().child("Users");
+            rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.hasChild(mAuth.getCurrentUser().getPhoneNumber())) {
+                        Toast.makeText(MainActivity.this,"You have data on server for this number",Toast.LENGTH_LONG).show();
+
+                        Intent intent1 = new Intent(getApplicationContext(), Hallfinder.class);
+
+                        startActivity(intent1);
+                        finish();
+
+                    }
+                    else {
+
+                        Intent intent = new Intent(getApplicationContext(), UserDetails.class);
+
+                        startActivity(intent);
+                        finish();
+
+                    }
+
+
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this,"Databse eroor",Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
 
         }
     }

@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "668120000655",
-    "firebase_url": "https://pstuah-82cb1.firebaseio.com",
-    "project_id": "pstuah-82cb1",
-    "storage_bucket": "pstuah-82cb1.appspot.com"
+    "project_number": "1049427081234",
+    "firebase_url": "https://fir-phone-authentication-1f70e.firebaseio.com",
+    "project_id": "fir-phone-authentication-1f70e",
+    "storage_bucket": "fir-phone-authentication-1f70e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:668120000655:android:1d4521bbaf7b0e1e",
+        "mobilesdk_app_id": "1:1049427081234:android:994dcfb0bb775237",
         "android_client_info": {
-          "package_name": "com.rrsaikat.pstuah"
+          "package_name": "com.rrsaikat.Myappgit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "668120000655-vgl1a9lbutbalq6249c8n0c1pag1obal.apps.googleusercontent.com",
+          "client_id": "1049427081234-f5uq6fg6srd70402capr9rlpjn7kfs2o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.rrsaikat.pstuah",
-            "certificate_hash": "64ad2966a73694cac04354f69fe8bf530a9c2482"
+            "package_name": "com.rrsaikat.Myappgit",
+            "certificate_hash": "61308cb178b5c1f8ffe92ae3f8cccb91ebddc9c5"
           }
         },
         {
-          "client_id": "668120000655-tmag4vc5lqfiv96u3la6098p3mq0to0k.apps.googleusercontent.com",
+          "client_id": "1049427081234-ac4ql9sfcou15lef3tfabk21476h05h6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCgQBdmqA3Otc1SxRd9Hbi7yQuf_z97f_w"
+          "current_key": "AIzaSyCd1geyWs5Q-BZjlgg3J_sUWXcmF_3YUPo"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "668120000655-tmag4vc5lqfiv96u3la6098p3mq0to0k.apps.googleusercontent.com",
+              "client_id": "1049427081234-ac4ql9sfcou15lef3tfabk21476h05h6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

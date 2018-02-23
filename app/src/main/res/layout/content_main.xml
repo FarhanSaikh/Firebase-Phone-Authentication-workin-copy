@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:weightSum="6"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.rrsaikat.pstuah.MainActivity"
+    tools:context="com.rrsaikat.Myappgit.MainActivity"
     tools:showIn="@layout/activity_main">
 
 
@@ -118,10 +118,12 @@
 
                     <Button
                         android:theme="@style/ThemeOverlay.MyDarkButton"
+
                         android:id="@+id/button_start_verification"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
+                        android:drawableLeft="@drawable/ic_priority_high_black_24dp"
                         android:text="@string/start_phone_auth"/>
 
                     <Button
@@ -130,7 +132,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:text="@string/verify_phone_auth"/>
+                        android:text="@string/verify_phone_auth"
+                        android:drawableLeft="@drawable/ic_verified_user_black_24dp"/>
 
                     <Button
                         android:theme="@style/ThemeOverlay.MyDarkButton"
@@ -138,14 +141,15 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:text="@string/resend_phone_auth"/>
+                        android:text="@string/resend_phone_auth"
+                        android:drawableLeft="@drawable/ic_settings_backup_restore_black_24dp"/>
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/signed_in_buttons"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="horizontal"
