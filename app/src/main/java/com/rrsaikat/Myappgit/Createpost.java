@@ -2,6 +2,7 @@ package com.rrsaikat.Myappgit;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -73,9 +75,16 @@ public class Createpost extends AppCompatActivity {
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-            if (resultCode == RESULT_OK && requestCode == GALLREQ) {
+            if (resultCode == RESULT_OK && requestCode == GALLREQ && data != null && data.getData() != null) {
                 imageUri = data.getData();
                 postimage.setImageURI(imageUri);
+            }
+
+
+            else {
+                Toast.makeText(Createpost.this,"Please select an image",Toast.LENGTH_SHORT).show();
+
+
             }
         }
 
@@ -86,44 +95,52 @@ public class Createpost extends AppCompatActivity {
         final String posttitleuser=titletext.getText().toString();
         final String postdesc=descriptiontext.getText().toString();
 
-        if (!TextUtils.isEmpty(posttitleuser) && !TextUtils.isEmpty(postdesc)){
+        if (!TextUtils.isEmpty(posttitleuser) && !TextUtils.isEmpty(postdesc) && postimage.getDrawable()!=null) {
 
-            StorageReference filepath=storageReference.child(imageUri.getLastPathSegment());
-            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    try {
-                        mAuth=FirebaseAuth.getInstance();
-                        String usermobile = mAuth.getCurrentUser().getPhoneNumber();
+                StorageReference filepath = storageReference.child(imageUri.getLastPathSegment());
+                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
 
-                        titletext.setText("");
-                        descriptiontext.setText("");
-                        Toast.makeText(Createpost.this, "Image added", Toast.LENGTH_SHORT).show();
-                        final Uri downloadurl = taskSnapshot.getDownloadUrl();
-                        final DatabaseReference newpost = mref.push();
-                        newpost.child("posttitle").setValue(posttitleuser);
-                        newpost.child("postdesc").setValue(postdesc);
-                        newpost.child("postimage").setValue(downloadurl.toString());
-                        newpost.child("Created by").setValue(usermobile);
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        Toast.makeText(Createpost.this, "Title and description added", Toast.LENGTH_SHORT).show();
+                        try {
+                            mAuth = FirebaseAuth.getInstance();
+                            String usermobile = mAuth.getCurrentUser().getPhoneNumber();
+
+                            titletext.setText("");
+                            descriptiontext.setText("");
+                            Toast.makeText(Createpost.this, "Image added", Toast.LENGTH_SHORT).show();
+                            final Uri downloadurl = taskSnapshot.getDownloadUrl();
+                            final DatabaseReference newpost = mref.push();
+                            newpost.child("posttitle").setValue(posttitleuser);
+                            newpost.child("postdesc").setValue(postdesc);
+                            newpost.child("postimage").setValue(downloadurl.toString());
+                            newpost.child("Created by").setValue(usermobile);
+
+                            Toast.makeText(Createpost.this, "Title and description added", Toast.LENGTH_SHORT).show();
+
+                        } catch (Exception e) {
+
+                            Toast.makeText(Createpost.this, "something not right, retry..", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Createpost.this, "choose an Image, its compulsory", Toast.LENGTH_SHORT).show();
+
 
                     }
-                    catch (Exception e){
-
-                        Toast.makeText(Createpost.this,"something not right, retry..", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-
-            });
-        }
+                });
+            }
 
 
         else {
 
-            Toast.makeText(Createpost.this,"Pic and image and fill all the feilds. "+mAuth.getCurrentUser().getPhoneNumber(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(Createpost.this,"Pic an image and fill all the feilds. "+mAuth.getCurrentUser().getPhoneNumber(),Toast.LENGTH_SHORT).show();
         }
     }
 
