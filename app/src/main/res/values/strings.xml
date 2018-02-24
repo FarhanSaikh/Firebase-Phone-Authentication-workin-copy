@@ -79,4 +79,6 @@
     <string name="post_title">Post Title</string>
     <string name="post_desription_in_sort">Post Desription in sort..</string>
     <string name="update">Update</string>
+    <string name="the_description_of_the_post_is_going_to_here_with_super_design_and_image_view">The description of the post is going to here. with super design and image view.</string>
+    <string name="titleof">The title of the post is here</string>
 </resources>

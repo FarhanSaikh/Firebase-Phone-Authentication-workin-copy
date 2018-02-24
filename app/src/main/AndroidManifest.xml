@@ -3,10 +3,10 @@
     package="com.rrsaikat.Myappgit">
 
     <uses-permission android:name="android.permission.INTERNET" />
-     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <application
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -28,8 +28,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".MyFirebaseInstanceIdService">
+        <service android:name=".MyFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -37,8 +36,8 @@
 
         <activity android:name=".Hallfinder" />
         <activity android:name=".UserDetails" />
-        <activity android:name=".Createpost">
-        </activity>
+        <activity android:name=".Createpost"></activity>
+        <activity android:name=".PostList"></activity>
     </application>
 
 </manifest>

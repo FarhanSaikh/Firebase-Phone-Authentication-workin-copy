@@ -21,11 +21,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Date;
+
 public class Createpost extends AppCompatActivity {
     ImageView postimage;
     private static final int GALLREQ = 1;
     EditText titletext, descriptiontext;
-    Button submitbutton,imagebuttton,logoutbt;
+    Button submitbutton,imagebuttton,logoutbt,postbt;
  StorageReference storageReference=null;
  FirebaseAuth mAuth;
  FirebaseDatabase firebaseDatabase;
@@ -40,13 +42,14 @@ public class Createpost extends AppCompatActivity {
         titletext = (EditText) findViewById(R.id.post_title);
         descriptiontext = (EditText) findViewById(R.id.post_desc);
         submitbutton = (Button) findViewById(R.id.updatebtton);
+        postbt= (Button) findViewById(R.id.getpostbt);
         imagebuttton= (Button) findViewById(R.id.imagbutton);
         postimage=(ImageView)findViewById(R.id.imageview);
         logoutbt= (Button) findViewById(R.id.logoutbttn);
         mAuth=FirebaseAuth.getInstance();
             String usermobile = mAuth.getCurrentUser().getPhoneNumber();
             storageReference = FirebaseStorage.getInstance().getReference("User Posts").child(usermobile);
-            mref=FirebaseDatabase.getInstance().getReference(usermobile).child("Post: ");
+            mref=FirebaseDatabase.getInstance().getReference().child("Post");
 
 
 
@@ -92,14 +95,18 @@ public class Createpost extends AppCompatActivity {
 
                     try {
                         mAuth=FirebaseAuth.getInstance();
+                        String usermobile = mAuth.getCurrentUser().getPhoneNumber();
+
                         titletext.setText("");
                         descriptiontext.setText("");
                         Toast.makeText(Createpost.this, "Image added", Toast.LENGTH_SHORT).show();
                         final Uri downloadurl = taskSnapshot.getDownloadUrl();
                         final DatabaseReference newpost = mref.push();
-                        newpost.child("Post title: ").setValue(posttitleuser);
-                        newpost.child("Post Description: ").setValue(postdesc);
-                        newpost.child("Image Url: ").setValue(downloadurl.toString());
+                        newpost.child("posttitle").setValue(posttitleuser);
+                        newpost.child("postdesc").setValue(postdesc);
+                        newpost.child("postimage").setValue(downloadurl.toString());
+                        newpost.child("Created by").setValue(usermobile);
+
                         Toast.makeText(Createpost.this, "Title and description added", Toast.LENGTH_SHORT).show();
 
                     }
@@ -127,6 +134,14 @@ public class Createpost extends AppCompatActivity {
         Intent intent=new Intent(Createpost.this,MainActivity.class);
         startActivity(intent);
         finish();
+
+    }
+
+    public void seepost(View view) {
+
+        Intent intent2=new Intent(Createpost.this,PostList.class);
+        startActivity(intent2);
+
 
     }
 }

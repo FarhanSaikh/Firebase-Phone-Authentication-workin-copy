@@ -43,19 +43,24 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Add image"
+
     android:onClick="upldimage"
     android:id="@+id/imagbutton"
     android:drawableLeft="@drawable/ic_add_a_photo_black_24dp"
     android:drawablePadding="10dp"
     android:drawableStart="@drawable/ic_add_a_photo_black_24dp" />
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:pointerIcon="arrow">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:id="@+id/imageview"
         tools:ignore="ContentDescription" />
 
+    </ScrollView>
 
 
     <Button
@@ -68,16 +73,37 @@
         android:background="@drawable/buttonstyle"
         android:layout_marginTop="20dp"
         />
-    <Button
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/logout"
-        android:onClick="logout"
-        android:textColor="#fafafa"
-        android:background="@drawable/buttonstyle"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:id="@+id/logout"
+            android:layout_weight="1"
+            android:onClick="logout"
+            android:textColor="#fafafa"
+            android:background="@drawable/buttonstyle"
+            android:layout_marginTop="20dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="see posts"
+            android:id="@+id/getpostbt"
+            android:onClick="seepost"
+
+            android:layout_weight="1"
+            android:textColor="#fafafa"
+            android:background="@drawable/buttonstyle"
+            android:layout_marginTop="20dp"
+            />
+    </LinearLayout>
+
 
 
 
