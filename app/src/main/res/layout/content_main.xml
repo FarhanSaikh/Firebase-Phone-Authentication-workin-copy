@@ -26,14 +26,14 @@
                 android:layout_width="280dp"
                 android:layout_height="140dp"
                 android:contentDescription="@string/desc_firebase_lockup"
-                android:src="@drawable/pstu" />
+                android:src="@drawable/blogpic" />
 
             <TextView
                 android:id="@+id/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="PSTU"
+                android:text="Write-Learn-Earn"
                 android:theme="@style/ThemeOverlay.MyTitleText" />
 
             <TextView

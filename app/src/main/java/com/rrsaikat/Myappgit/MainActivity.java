@@ -373,6 +373,8 @@ public class MainActivity extends AppCompatActivity  implements
         } else {
             // Signed in
             mPhoneNumberViews.setVisibility(View.GONE);
+            mPhoneNumberViews.clearFocus();
+            mStatusText.setVisibility(View.INVISIBLE);
             /*
             mSignedInViews.setVisibility(View.VISIBLE);
 
@@ -392,16 +394,15 @@ public class MainActivity extends AppCompatActivity  implements
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     if (snapshot.hasChild("User Information")) {
-                        Toast.makeText(MainActivity.this,"You have data on server for this number",Toast.LENGTH_LONG).show();
-
-                        Intent intent1 = new Intent(getApplicationContext(), Createpost.class);
-
+                        Intent intent1 = new Intent(getApplicationContext(), PostList.class);
                         startActivity(intent1);
                         finish();
 
 
                     }
-                    else {
+
+                    else
+                        {
 
                         Intent intent = new Intent(getApplicationContext(), UserDetails.class);
 

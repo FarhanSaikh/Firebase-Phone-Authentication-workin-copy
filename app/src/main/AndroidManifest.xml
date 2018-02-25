@@ -37,7 +37,7 @@
         <activity android:name=".Hallfinder" />
         <activity android:name=".UserDetails" />
         <activity android:name=".Createpost" />
-        <activity android:name=".PostList" />
+        <activity android:name=".PostList"/>
         <activity android:name=".Singlepost"></activity>
     </application>
 
