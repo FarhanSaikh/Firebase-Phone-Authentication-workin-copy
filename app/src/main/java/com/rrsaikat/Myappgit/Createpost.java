@@ -1,5 +1,6 @@
 package com.rrsaikat.Myappgit;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -91,12 +92,16 @@ public class Createpost extends AppCompatActivity {
 
 
 
-    public void update(View view) {
+        public void update(View view) {
         final String posttitleuser=titletext.getText().toString();
         final String postdesc=descriptiontext.getText().toString();
 
         if (!TextUtils.isEmpty(posttitleuser) && !TextUtils.isEmpty(postdesc) && postimage.getDrawable()!=null) {
-
+            final ProgressDialog progressDialog=new ProgressDialog(Createpost.this);
+            progressDialog.setTitle("Updating your post");
+            progressDialog.setMessage("please wait..");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
 
                 StorageReference filepath = storageReference.child(imageUri.getLastPathSegment());
                 filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -110,7 +115,8 @@ public class Createpost extends AppCompatActivity {
 
                             titletext.setText("");
                             descriptiontext.setText("");
-                            Toast.makeText(Createpost.this, "Image added", Toast.LENGTH_SHORT).show();
+                            postimage.setImageDrawable(null);
+                            //Toast.makeText(Createpost.this, "Image added", Toast.LENGTH_SHORT).show();
                             final Uri downloadurl = taskSnapshot.getDownloadUrl();
                             final DatabaseReference newpost = mref.push();
                             newpost.child("posttitle").setValue(posttitleuser);
@@ -118,7 +124,9 @@ public class Createpost extends AppCompatActivity {
                             newpost.child("postimage").setValue(downloadurl.toString());
                             newpost.child("Created by").setValue(usermobile);
 
-                            Toast.makeText(Createpost.this, "Title and description added", Toast.LENGTH_SHORT).show();
+                            //cancelling the progress dialog after post added..
+                             progressDialog.cancel();
+                            Toast.makeText(Createpost.this, "Post updated successfully..", Toast.LENGTH_SHORT).show();
 
                         } catch (Exception e) {
 
