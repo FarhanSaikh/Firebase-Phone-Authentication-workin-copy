@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +45,7 @@ FirebaseAuth mAuth;
         setContentView(R.layout.activity_post_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Learn and Earn");
+        toolbar.setTitleTextColor(Color.BLACK);
         setSupportActionBar(toolbar);
 
 
@@ -167,7 +169,7 @@ FirebaseAuth mAuth;
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                //logout function is here
                     logout();
 
                     Toast.makeText(PostList.this, "Logged Out", Toast.LENGTH_SHORT).show();
@@ -187,7 +189,13 @@ FirebaseAuth mAuth;
 
             return true;
         }
+        if (id == R.id.action_about) {
 
+            Intent intent=new Intent(PostList.this,AboutUs.class);
+            startActivity(intent);
+
+
+        }
 
 
         return super.onOptionsItemSelected(item);

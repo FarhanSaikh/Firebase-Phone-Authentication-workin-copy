@@ -1,5 +1,6 @@
 package com.rrsaikat.Myappgit;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -387,6 +388,11 @@ public class MainActivity extends AppCompatActivity  implements
             */
 
 
+            final ProgressDialog progressDialog=new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Please wait..");
+            progressDialog.getActionBar();
+            progressDialog.setCancelable(false);
+            progressDialog.show();
             FirebaseDatabase firebaseDataba=FirebaseDatabase.getInstance();
 
             DatabaseReference rootRef = firebaseDataba.getReference(mAuth.getCurrentUser().getPhoneNumber());
@@ -397,13 +403,14 @@ public class MainActivity extends AppCompatActivity  implements
                         Intent intent1 = new Intent(getApplicationContext(), PostList.class);
                         startActivity(intent1);
                         finish();
+                        progressDialog.cancel();
 
 
                     }
 
                     else
                         {
-
+                             progressDialog.cancel();
                         Intent intent = new Intent(getApplicationContext(), UserDetails.class);
 
                         startActivity(intent);

@@ -99,7 +99,7 @@ public class Createpost extends AppCompatActivity {
         if (!TextUtils.isEmpty(posttitleuser) && !TextUtils.isEmpty(postdesc) && postimage.getDrawable()!=null) {
             final ProgressDialog progressDialog=new ProgressDialog(Createpost.this);
             progressDialog.setTitle("Updating your post");
-            progressDialog.setMessage("please wait..");
+            progressDialog.setMessage("Please wait..");
             progressDialog.setCancelable(false);
             progressDialog.show();
 

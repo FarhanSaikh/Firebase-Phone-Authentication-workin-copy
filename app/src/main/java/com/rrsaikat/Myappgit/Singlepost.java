@@ -29,8 +29,8 @@ public class Singlepost extends AppCompatActivity {
         setContentView(R.layout.activity_singlepost);
 
         postimage=(ImageView) findViewById(R.id.singlepostimage);
-        title=findViewById(R.id.singleposttitle);
-        desc=findViewById(R.id.singlepostdesc);
+        title=(TextView) findViewById(R.id.singleposttitle);
+        desc=(TextView) findViewById(R.id.singlepostdesc);
         poost_key= getIntent().getExtras().getString("post_id");
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Post");
