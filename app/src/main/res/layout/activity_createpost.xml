@@ -31,6 +31,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageview"
         tools:ignore="ContentDescription" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoriesspin"
+        android:entries="@array/category_name"
+        android:prompt="@string/category_prompt"
+        android:layout_margin="10dp"
+        >
+
+    </Spinner>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"

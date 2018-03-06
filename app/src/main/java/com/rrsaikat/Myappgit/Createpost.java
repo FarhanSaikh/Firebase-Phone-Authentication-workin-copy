@@ -48,7 +48,7 @@ public class Createpost extends AppCompatActivity {
         postbt= (Button) findViewById(R.id.getpostbt);
         imagebuttton= (Button) findViewById(R.id.imagbutton);
         postimage=(ImageView)findViewById(R.id.imageview);
-        logoutbt= (Button) findViewById(R.id.logoutbttn);
+        logoutbt= (Button) findViewById(R.id.logout);
         mAuth=FirebaseAuth.getInstance();
             String usermobile = mAuth.getCurrentUser().getPhoneNumber();
             storageReference = FirebaseStorage.getInstance().getReference("User Posts").child(usermobile);

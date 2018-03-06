@@ -33,6 +33,7 @@ public class PostList extends AppCompatActivity {
 RecyclerView mpostlist;
 DatabaseReference mDatabse;
 FirebaseAuth mAuth;
+private LinearLayoutManager mLayoutManager;
 
 
 
@@ -52,7 +53,13 @@ FirebaseAuth mAuth;
 
         mpostlist=(RecyclerView) findViewById(R.id.recyclerview);
         mpostlist.setHasFixedSize(true);
-        mpostlist.setLayoutManager(new LinearLayoutManager(this));
+       // mpostlist.setLayoutManager(new LinearLayoutManager(this));
+        mLayoutManager = new LinearLayoutManager(PostList.this);
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+
+        // Now set the layout manager and the adapter to the RecyclerView
+        mpostlist.setLayoutManager(mLayoutManager);
         mAuth=FirebaseAuth.getInstance();
         String usermobile=mAuth.getCurrentUser().getPhoneNumber();
         mDatabse= FirebaseDatabase.getInstance().getReference().child("Post");
